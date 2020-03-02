@@ -12,10 +12,10 @@
       $this->y = 0;
     }
 
-    public function __get(int $variable) 
+    public function __get($variable) 
     {
       
-      return $this->variable;
+      return $this->$variable;
     }
 
     

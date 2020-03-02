@@ -2,7 +2,7 @@
 
   class Triangle extends Shape
   {
-    protected $sommets;
+    private $sommets;
     
     public function __construct()
     {
@@ -22,4 +22,11 @@
     }
 
     public function draw() {}
+
+    public function __toString()
+    {  
+
+      return var_dump($this->sommets);
+      
+    }
   }
