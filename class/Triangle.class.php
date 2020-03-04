@@ -1,32 +1,31 @@
 <?php
 
-  class Triangle extends Shape
-  {
-    private $sommets;
-    
-    public function __construct()
+class Triangle extends Shape
+{
+    private $points;
+
+    public function __construct($x1, $y1, $x2, $y2, $x3, $y3)
     {
-
-      $this->sommets = array();
+        $this->points = array(new Point($x1, $y1), new Point($x2, $y2), new Point($x3, $y3));
     }
 
-    public function setSommets(Point $premierSommet, Point $deuxiemeSommet, Point $troisiemeSommet)
+    public function draw(SvgRenderer $painter)
     {
+        // Création de variables intermédiaires.
+        $x1 = $this->points[0]->getX();
+        $y1 = $this->points[0]->getY();
+        $x2 = $this->points[1]->getX();
+        $y2 = $this->points[1]->getY();
+        $x3 = $this->points[2]->getX();
+        $y3 = $this->points[2]->getY();
 
-      $this->sommets[0][0] = $premierSommet->x;
-      $this->sommets[0][1] = $premierSommet->y;
-      $this->sommets[1][0] = $deuxiemeSommet->x;
-      $this->sommets[1][1] = $deuxiemeSommet->y;
-      $this->sommets[2][0] = $troisiemeSommet->x;
-      $this->sommets[2][1] = $troisiemeSommet->y;
+        return $painter->drawTriangle($x1, $y1, $x2, $y2, $x3, $y3, $this->color, $this->opacity);
     }
 
-    public function draw() {}
-
-    public function __toString()
-    {  
-
-      return var_dump($this->sommets);
-      
+    public function setCoordinates($x1, $y1, $x2, $y2, $x3, $y3)
+    {
+        $this->points[0]->moveTo($x1, $y1);
+        $this->points[1]->moveTo($x2, $y2);
+        $this->points[2]->moveTo($x3, $y3);
     }
-  }
+}

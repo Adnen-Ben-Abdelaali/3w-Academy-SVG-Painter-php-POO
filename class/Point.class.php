@@ -1,30 +1,29 @@
 <?php
 
-  class Point 
-  {
-    private $x;
+class Point
+{
+	private $x;
     private $y;
 
-    public function __construct() 
+	public function __construct($x, $y)
+	{
+		$this->x = $x;
+		$this->y = $y;
+	}
+
+    public function getX()
     {
-      
-      $this->x = 0;
-      $this->y = 0;
+        return $this->x;
     }
 
-    public function __get($variable) 
+    public function getY()
     {
-      
-      return $this->$variable;
+        return $this->y;
     }
 
-    
-    public function setPoint(int $xCoordinate, int $yCoordiante) 
+    public function moveTo($x, $y)
     {
-
-      $this->x = $xCoordinate;
-      $this->y = $yCoordiante;
+        $this->x = $x;
+        $this->y = $y;
     }
-    
-  }
-
+}
